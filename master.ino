@@ -19,11 +19,11 @@ void setup() {
     digitalWrite(5, HIGH);
     Serial.begin( 115200 );
     Serial.println( "Master" );
-
+ delay(1000);// need delay 
     //first, we start STA mode and connect to router
-    WiFi.mode( WIFI_AP_STA );
+    WiFi.mode( WIFI_AP_STA ); delay(1000);// need delay 
     WiFi.begin(ssidRouter,passwordRouter); 
-    
+     delay(1000);// need delay 
     //Wifi connection
     while (WiFi.status() != WL_CONNECTED) 
     {
@@ -34,13 +34,13 @@ void setup() {
     Serial.println("Router WiFi connected");
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
-  
+   delay(1000);// need delay 
     //second, we start AP mode with LR protocol
     //This AP ssid is not visible whith our regular devices
     WiFi.mode( WIFI_AP );//for AP mode
     //here config LR mode
     int a= esp_wifi_set_protocol( WIFI_IF_AP, WIFI_PROTOCOL_LR );
-    Serial.println(a);
+    Serial.println(a); delay(1000);// need delay 
     WiFi.softAP(ssid, password);
     Serial.println( WiFi.softAPIP() );
     Serial.println("#");//for debug

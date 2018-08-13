@@ -31,11 +31,12 @@ void setup() {
     Serial.begin( 115200 );
     Serial.println( "Slave" );
     pinMode(5, OUTPUT);//bultin Led, for debug
-
+     delay(1000);// need delay 
     //We start STA mode with LR protocol
     //This ssid is not visible whith our regular devices
     WiFi.mode( WIFI_STA );//for STA mode
-    //if mode LR config OK
+    //if mode LR config OK 
+    delay(1000);// need delay 
     int a= esp_wifi_set_protocol( WIFI_IF_STA, WIFI_PROTOCOL_LR );
     if (a==0)
     {
@@ -51,9 +52,9 @@ void setup() {
       Serial.print(a);
       Serial.println(" , Error in Mode LR!");
     }
-      
+       delay(1000);// need delay 
     WiFi.begin(ssid, password);//this ssid is not visible
-
+ delay(1000);// need delay 
     //Wifi connection, we connect to master
     while (WiFi.status() != WL_CONNECTED) 
     {
@@ -64,7 +65,7 @@ void setup() {
     Serial.println("WiFi connected");
     Serial.print("IP address: ");
     Serial.println(WiFi.localIP());
-  
+   delay(1000);// need delay 
     udp.begin( 8888 );
 }
 
